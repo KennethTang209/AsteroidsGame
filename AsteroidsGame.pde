@@ -8,4 +8,7 @@ public void draw()
 {
   ufo.show();
 }
+public void keyPressed(){
+	
+}
 
