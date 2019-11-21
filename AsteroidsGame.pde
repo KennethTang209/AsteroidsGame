@@ -1,5 +1,6 @@
 Spaceship ufo;
 Star[] stars = new Star[200];
+ArrayList <Asteroid> rock = new ArrayList <Asteroid>();
 
 boolean wIsPressed = false;
 boolean aIsPressed = false;
@@ -13,6 +14,9 @@ public void setup()
     for(int i = 0; i < stars.length; i++){
     	stars[i] = new Star();
     }
+    for(int i = 0; i < 20; i++){
+    	rock.add(new Asteroid());
+    }  
 }
 public void draw() 
 {
@@ -22,17 +26,23 @@ public void draw()
 	}
 	ufo.show();
 	ufo.move();
-
+	for(int i = 0; i < rock.size(); i++){
+		rock.get(i).move();
+		rock.get(i).show();
+		if(dist((float)ufo.getCenterX(), (float)ufo.getCenterY(), (float)rock.get(i).getCenterX(), (float)rock.get(i).getCenterY()) < 13){
+			rock.remove(i);
+		}
+	}
 	if(wIsPressed == true && aIsPressed == true){
-		ufo.accelerate(.1);
+		ufo.accelerate(.05);
 		ufo.turn(-3);
 	}
 	if(wIsPressed == true && dIsPressed == true){
-		ufo.accelerate(.1);
+		ufo.accelerate(.05);
 		ufo.turn(3);
 	}
 	if(wIsPressed == true){
-		ufo.accelerate(.1);
+		ufo.accelerate(.05);
 	}
 	if(aIsPressed == true){
 		ufo.turn(-3);
