@@ -31,6 +31,7 @@ public void draw()
 		rock.get(i).show();
 		if(dist((float)ufo.getCenterX(), (float)ufo.getCenterY(), (float)rock.get(i).getCenterX(), (float)rock.get(i).getCenterY()) < 13){
 			rock.remove(i);
+			rock.add(new Asteroid());
 		}
 	}
 	if(wIsPressed == true && aIsPressed == true){
