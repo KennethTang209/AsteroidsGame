@@ -29,7 +29,7 @@ public void draw()
 	for(int i = 0; i < rock.size(); i++){
 		rock.get(i).move();
 		rock.get(i).show();
-		if(dist((float)ufo.getCenterX(), (float)ufo.getCenterY(), (float)rock.get(i).getCenterX(), (float)rock.get(i).getCenterY()) < 13){
+		if(dist((float)ufo.getCenterX(), (float)ufo.getCenterY(), (float)rock.get(i).getCenterX(), (float)rock.get(i).getCenterY()) < 15){
 			rock.remove(i);
 			rock.add(new Asteroid());
 		}
