@@ -1,29 +1,25 @@
 Spaceship ufo;
 Star[] stars = new Star[200];
 ArrayList <Asteroid> rock = new ArrayList <Asteroid>();
+ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
 
 boolean wIsPressed = false;
 boolean aIsPressed = false;
 boolean dIsPressed = false;
 boolean qIsPressed = false;
+boolean spaceIsPressed = false;
 
 public void setup() 
 {
 	size(500,500);
     ufo = new Spaceship();
-    for(int i = 0; i < stars.length; i++){
-    	stars[i] = new Star();
-    }
-    for(int i = 0; i < 20; i++){
-    	rock.add(new Asteroid());
-    }  
+    for(int i = 0; i < stars.length; i++){stars[i] = new Star();}
+    for(int i = 0; i < 20; i++){rock.add(new Asteroid());}  
 }
 public void draw() 
 {
 	background(0);
-	for(int i = 0; i < stars.length; i++){
-		stars[i].show();
-	}
+	for(int i = 0; i < stars.length; i++){stars[i].show();}
 	ufo.show();
 	ufo.move();
 	for(int i = 0; i < rock.size(); i++){
@@ -34,29 +30,22 @@ public void draw()
 			rock.add(new Asteroid());
 		}
 	}
-	if(wIsPressed == true && aIsPressed == true){
-		ufo.accelerate(.05);
-		ufo.turn(-3);
+	for(int i = 0; i < pewpew.size(); i++){
+		pewpew.get(i).move();
+		pewpew.get(i).show();
 	}
-	if(wIsPressed == true && dIsPressed == true){
-		ufo.accelerate(.05);
-		ufo.turn(3);
-	}
-	if(wIsPressed == true){
-		ufo.accelerate(.05);
-	}
-	if(aIsPressed == true){
-		ufo.turn(-3);
-	}
-	if(dIsPressed == true){
-		ufo.turn(3);
-	}
+	if(wIsPressed = true){ufo.accelerate(.05);}
+	if(aIsPressed == true){ufo.turn(-3);}
+	if(dIsPressed == true){ufo.turn(3);}
+	if(spaceIsPressed == true){pewpew.add(new Bullet(ufo));}
+
 }
 public void keyPressed(){
 	if(key == 'w'){wIsPressed = true;}
 	if(key == 'a'){aIsPressed = true;}
 	if(key == 'd'){dIsPressed = true;}
 	if(key == 'q'){qIsPressed = true;}
+	if(key == ' '){spaceIsPressed = true;}
 	if(qIsPressed == true){
 		ufo.setDirectionX(0);
 		ufo.setDirectionX(0);
@@ -70,4 +59,5 @@ public void keyReleased() {
 	if(key == 'a'){aIsPressed = false;}
 	if(key == 'd'){dIsPressed = false;}
 	if(key == 'q'){qIsPressed = false;}
+	if(key == ' '){spaceIsPressed = false;}
 }
