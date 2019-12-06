@@ -1,7 +1,7 @@
 class Bullet extends Floater
 {
 
-	Bullet(Spaceship theShip)
+	public Bullet(Spaceship theShip)
 	{
 		myCenterX = theShip.getCenterX();
 		myCenterY = theShip.getCenterY();
@@ -16,4 +16,6 @@ class Bullet extends Floater
 		myCenterX += myDirectionX;    
    		myCenterY += myDirectionY;
 	}
+	public double getCenterX(){return myCenterX;}
+	public double getCenterY(){return myCenterY;}
 }

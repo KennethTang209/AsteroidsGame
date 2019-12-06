@@ -9,6 +9,8 @@ boolean dIsPressed = false;
 boolean qIsPressed = false;
 boolean spaceIsPressed = false;
 
+int buffer = 0;
+
 public void setup() 
 {
 	size(500,500);
@@ -35,21 +37,30 @@ public void draw()
 	{
 		pewpew.get(i).move();
 		pewpew.get(i).show();
-		for( int j = 0; i < rock.size(); i++)
+		for( int j = 0; j < rock.size(); j++)
 		{
-			if(dist(pewpew.get(i).getCenterX(), pewpew.get(i).getCenterY(), rock.gt(j).getCenterX(), rock.get(j).getCenterY()) < 5)
+			if(dist((float)pewpew.get(i).getCenterX(), (float)pewpew.get(i).getCenterY(), (float)rock.get(j).getCenterX(), (float)rock.get(j).getCenterY()) < 5)
 			{
-				rock.remove(i);
+				rock.remove(j);
 				pewpew.remove(i);
-				i--;
-				j--;
+				rock.add(new Asteroid());
+				break;
 			}
 		}
 	}
+	
 	if(wIsPressed == true){ufo.accelerate(.05);}
-	if(aIsPressed == true){ufo.turn(-3);}
-	if(dIsPressed == true){ufo.turn(3);}
-	if(spaceIsPressed == true){pewpew.add(new Bullet(ufo));}
+	if(aIsPressed == true){ufo.turn(-5);}
+	if(dIsPressed == true){ufo.turn(5);}
+	if(spaceIsPressed == true)
+	{
+		buffer++;
+		if(buffer == 7)
+		{
+			pewpew.add(new Bullet(ufo));
+			buffer = 0;
+		}
+	}
 }
 public void keyPressed()
 {
