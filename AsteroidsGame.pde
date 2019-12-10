@@ -15,7 +15,6 @@ public void setup()
 {
 	size(500,500);
 	textSize(50);
-	frameRate(60); 
 
     ufo = new Spaceship();
     for(int i = 0; i < stars.length; i++){stars[i] = new Star();}
@@ -32,8 +31,10 @@ public void draw()
 		rock.get(i).move();
 		rock.get(i).show();
 		if(dist((float)ufo.getCenterX(), (float)ufo.getCenterY(), (float)rock.get(i).getCenterX(), (float)rock.get(i).getCenterY()) < 15){
-			frameRate(0);
-			fill(255);
+			rock.get(i).setDirectionX(0);
+			rock.get(i).setDirectionY(0);
+			ufo.setDirectionX(0);
+			ufo.setDirectionY(0);
 			text("Game Over", 115, 250);
 
 		}
