@@ -15,6 +15,7 @@ public void setup()
 {
 	size(500,500);
 	textSize(50);
+	frameRate(60); 
 
     ufo = new Spaceship();
     for(int i = 0; i < stars.length; i++){stars[i] = new Star();}
