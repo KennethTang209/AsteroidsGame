@@ -35,6 +35,7 @@ public void draw()
 			rock.get(i).setDirectionY(0);
 			ufo.setDirectionX(0);
 			ufo.setDirectionY(0);
+			fill(255);
 			text("Game Over", 115, 250);
 
 		}
