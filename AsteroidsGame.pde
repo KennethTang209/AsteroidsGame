@@ -14,6 +14,8 @@ int buffer = 0;
 public void setup() 
 {
 	size(500,500);
+	textSize(50);
+
     ufo = new Spaceship();
     for(int i = 0; i < stars.length; i++){stars[i] = new Star();}
     for(int i = 0; i < 20; i++){rock.add(new Asteroid());}  
@@ -29,8 +31,10 @@ public void draw()
 		rock.get(i).move();
 		rock.get(i).show();
 		if(dist((float)ufo.getCenterX(), (float)ufo.getCenterY(), (float)rock.get(i).getCenterX(), (float)rock.get(i).getCenterY()) < 15){
-			rock.remove(i);
-			rock.add(new Asteroid());
+			frameRate(0);
+			fill(255);
+			text("Game Over", 115, 250);
+
 		}
 	}
 	for(int i = 0; i < pewpew.size(); i++)
