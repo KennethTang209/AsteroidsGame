@@ -31,8 +31,11 @@ public void draw()
 		rock.get(i).move();
 		rock.get(i).show();
 		if(dist((float)ufo.getCenterX(), (float)ufo.getCenterY(), (float)rock.get(i).getCenterX(), (float)rock.get(i).getCenterY()) < 15){
-			rock.get(i).setDirectionX(0);
-			rock.get(i).setDirectionY(0);
+			for(int j = 0; j < rock.size(); j++)
+			{
+				rock.get(j).setDirectionX(0);
+				rock.get(j).setDirectionY(0);
+			}
 			ufo.setDirectionX(0);
 			ufo.setDirectionY(0);
 			fill(255);
