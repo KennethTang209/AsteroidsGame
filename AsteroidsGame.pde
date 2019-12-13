@@ -35,6 +35,7 @@ public void draw()
 			{
 				rock.get(j).setDirectionX(0);
 				rock.get(j).setDirectionY(0);
+				rock.get(j).setRotSpeed(0);
 			}
 			ufo.setDirectionX(0);
 			ufo.setDirectionY(0);

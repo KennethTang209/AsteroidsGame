@@ -34,4 +34,5 @@ class Asteroid extends Floater
 	public double getCenterY(){return myCenterY;}
 	public void setDirectionX(double x){myDirectionX = x;}
 	public void setDirectionY(double y){myDirectionY = y;}
+	public void setRotSpeed(int x){rotSpeed = x;}
 }
